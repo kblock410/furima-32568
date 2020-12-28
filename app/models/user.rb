@@ -11,6 +11,10 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :birthday, presence: true
 
+  # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  # validates :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i , message: "は英語と数字を混同させてください" }
+
   has_many :items
   has_many :buys
 
