@@ -109,4 +109,9 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include "Birthday can't be blank"
     end
   end
+  describe '登録ができる場合' do
+    it '全ての入力が正常に行われた場合' do
+      expect(@user).to be_valid
+    end
+  end
 end
