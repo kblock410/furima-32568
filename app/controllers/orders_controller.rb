@@ -1,10 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:index, :create]
+  before_action :authenticate_user!, only: :index
 
   def index
-    unless user_signed_in?
-      redirect_to root_path
-    end
     redirect_to root_path if @item.order.present? || current_user == @item.user
     @item_order = ItemOrder.new
   end
