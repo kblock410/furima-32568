@@ -23,5 +23,5 @@ class User < ApplicationRecord
             format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'Please type using half-width characters' }
 
   has_many :items
-  has_many :buys
+  has_many :orders
 end
