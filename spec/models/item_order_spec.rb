@@ -32,7 +32,8 @@ RSpec.describe ItemOrder, type: :model do
       it 'prefecture_idが0の場合' do
         @item_order.prefecture_id = 0
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include
+        binding.pry
+        expect(@item_order.errors.full_messages).to include "Prefecture Select"
       end
       it '市区町村が空の場合' do
         @item_order.city = nil
