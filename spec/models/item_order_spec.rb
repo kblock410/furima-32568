@@ -57,7 +57,7 @@ RSpec.describe ItemOrder, type: :model do
       it '電話番号が11桁より多い場合' do
         @item_order.tel_number = 111111111111
         @item_order.valid?
-        expect(@item_order.errors.full_messages).to include
+        expect(@item_order.errors.full_messages).to include "Tel number is invalid"
       end
       it '電話番号が英数字混合の場合' do
         @item_order.tel_number = 'i1111111111'
