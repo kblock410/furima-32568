@@ -4,7 +4,7 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= @item.name %>
+      <%= @item.title %>
     </h2>
     <div class='item-img-content'>
       <%= image_tag @item.image, class:"item-box-img" %>
@@ -22,15 +22,13 @@
         <%= @item.delivery_fee.name %>
       </span>
     </div>
-    <% unless @item.order.present? %>
-      <% if user_signed_in? %>
-        <% if current_user == @item.user%>
-          <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-          <p class='or-text'>or</p>
-          <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
-        <% else %>
-          <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
-        <% end %>
+    <% if @item.order.nil? && user_signed_in? %>
+      <% if current_user == @item.user%>
+        <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+        <p class='or-text'>or</p>
+        <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+      <% else %>
+        <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>
 
