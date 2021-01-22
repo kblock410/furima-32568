@@ -1,3 +1,5 @@
+# アプリ名
+
 ## usersテーブル
 
 | Column             | Type   | Options                   |
@@ -65,3 +67,4 @@
 * belongs_to :user
 * belongs_to :item
 * has_one :address
+
